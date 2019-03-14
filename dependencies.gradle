@@ -59,7 +59,9 @@ ext.with {
             stetho                 : "com.facebook.stetho:stetho:$stetho",
             test_rules             : "com.androidx.support.test:rules:$testRules",
             dagger_compiler        : "com.google.dagger:dagger-compiler:$dagger_kapt",
-            dagger                 : "com.google.dagger:dagger:$dagger"
+            dagger                 : "com.google.dagger:dagger:$dagger",
+            retrofit               : "com.squareup.retrofit2:retrofit:$retrofit",
+            moshi                  : "com.squareup.retrofit2:converter-moshi:$moshi"
     ]
 
 }
