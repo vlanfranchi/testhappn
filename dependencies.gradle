@@ -1,0 +1,58 @@
+ext.with {
+
+    compileSdk = 28
+    minSdk = 17
+    targetSdk = 28
+    versioningCode = 1
+    versioning = '0.0.1'
+    kotlins = '1.3.21'
+    gradle_version = '3.3.2'
+    appcompat = '28.0.0'
+    design = '28.0.0'
+    archRuntime = '1.1.1'
+    archCompiler = '1.1.1'
+    retrofit = '2.4.0'
+    moshi = '2.4.0'
+    serialization = '0.6.2'
+    constraintLayout = '1.1.2'
+    logging_interceptor = '3.9.1'
+    junit = '4.12'
+    espresso = '3.0.2'
+    room = '1.1.1'
+    stetho = '1.5.0'
+    testRules = '1.0.2'
+    coroutines = '1.1.1'
+    dagger_kapt = '2.16'
+    dagger = '2.19'
+
+    dependency_jvm = [
+            kotlin_stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
+            kotlin_reflect     :"org.jetbrains.kotlin:kotlin-reflect:$kotlins",
+            coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            junit              : "junit:junit:$junit",
+            kotlin_junit       : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
+                                  "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
+            retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
+            moshi_converter    : "com.squareup.retrofit2:converter-moshi:$moshi",
+            serialization      : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization",
+            logging_interceptor: "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+    ]
+
+    dependency_android = [
+            coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
+            arch_extensions        : "android.arch.lifecycle:extensions:$archRuntime",
+            arch_compiler          : "android.arch.lifecycle:common-java8:$archCompiler",
+            appcompat              : "com.android.support:appcompat-v7:$appcompat",
+            design                 : "com.android.support:design:$design",
+            cardview               : "com.android.support:cardview-v7:$appcompat",
+            recyclerview           : "com.android.support:recyclerview-v7:$appcompat",
+            constraint_layout      : "com.android.support.constraint:constraint-layout:$constraintLayout",
+            room_runtime           : "android.arch.persistence.room:runtime:$room",
+            room_compiler          : "android.arch.persistence.room:compiler:$room",
+            room_test              : "android.arch.persistence.room:testing:$room",
+            espresso               : "com.android.support.test.espresso:espresso-core:$espresso",
+            stetho                 : "com.facebook.stetho:stetho:$stetho",
+            test_rules             : "com.android.support.test:rules:$testRules",
+    ]
+
+}

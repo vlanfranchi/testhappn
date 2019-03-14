@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.jehutyno.testhappn"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // JVM dependencies
+    implementation dependency_jvm.kotlin_stdlib
+
+    // Android dependencies
+    implementation dependency_android.appcompat
+    implementation dependency_android.design
+    implementation dependency_android.cardview
+    implementation dependency_android.recyclerview
+    implementation dependency_android.coroutines
+    implementation dependency_android.stetho
+    
+    // Test
+    testImplementation dependency_jvm.junit
+    testImplementation dependency_jvm.kotlin_junit
+    androidTestImplementation dependency_jvm.junit
+    androidTestImplementation dependency_jvm.kotlin_junit
+    androidTestImplementation(dependency_android.espresso, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}

@@ -1,0 +1,25 @@
+apply from: 'dependencies.gradle'
+
+allprojects {
+    buildscript {
+        repositories {
+            google()
+            jcenter()
+
+        }
+        dependencies {
+            classpath "com.android.tools.build:gradle:$gradle_version"
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlins"
+        }
+    }
+
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
