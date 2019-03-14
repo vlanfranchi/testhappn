@@ -39,6 +39,9 @@ dependencies {
     implementation dependency_android.navigation_ui
     implementation dependency_android.constraint_layout
 
+    // DI
+    kapt dependency_android.dagger_compiler
+    implementation dependency_android.dagger
     // Test
     testImplementation dependency_jvm.junit
     testImplementation dependency_jvm.kotlin_junit

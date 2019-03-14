@@ -22,7 +22,7 @@ ext.with {
     stetho = '1.5.0'
     testRules = '1.1.0'
     coroutines = '1.1.1'
-    dagger_kapt = '2.16'
+    dagger_kapt = '2.19'
     dagger = '2.19'
     navigation = "2.0.0-rc02"
 
@@ -58,6 +58,8 @@ ext.with {
             espresso               : "androidx.test.espresso:espresso-core:$espresso",
             stetho                 : "com.facebook.stetho:stetho:$stetho",
             test_rules             : "com.androidx.support.test:rules:$testRules",
+            dagger_compiler        : "com.google.dagger:dagger-compiler:$dagger_kapt",
+            dagger                 : "com.google.dagger:dagger:$dagger"
     ]
 
 }
