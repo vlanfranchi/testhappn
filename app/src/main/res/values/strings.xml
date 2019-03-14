@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">testhappn</string>
+    <string name="articles_title">Articles</string>
+    <string name="detail_title">Detail</string>
 </resources>

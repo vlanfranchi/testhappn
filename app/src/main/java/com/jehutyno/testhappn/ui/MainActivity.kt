@@ -3,6 +3,7 @@ package com.jehutyno.testhappn.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.jehutyno.testhappn.R
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navHost.navigate(R.id.articlesFragment)
+        setupActionBarWithNavController(this, navHost)
     }
 
     override fun onSupportNavigateUp() =

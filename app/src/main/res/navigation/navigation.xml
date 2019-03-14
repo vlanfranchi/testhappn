@@ -8,7 +8,7 @@
     <fragment android:id="@+id/articlesFragment"
               android:name="com.jehutyno.testhappn.ui.articles.ArticlesFragment"
               tools:layout="@layout/fragment_articles"
-              android:label="fragment_articles">
+              android:label="@string/articles_title">
         <action android:id="@+id/action_articlesFragment_to_articleFragment" app:destination="@id/articleFragment"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"
@@ -18,6 +18,6 @@
     <fragment android:id="@+id/articleFragment"
               android:name="com.jehutyno.testhappn.ui.article.ArticleFragment"
               tools:layout="@layout/fragment_article"
-              android:label="fragment_article"/>
+              android:label="@string/detail_title"/>
 
 </navigation>
