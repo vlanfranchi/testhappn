@@ -1,6 +1,8 @@
 package com.jehutyno.testhappn.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
@@ -19,4 +21,9 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp() =
         navHost.navigateUp()
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
 }
