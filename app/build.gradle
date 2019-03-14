@@ -34,8 +34,10 @@ dependencies {
     implementation dependency_android.recyclerview
     implementation dependency_android.coroutines
     implementation dependency_android.stetho
+    implementation dependency_android.navigation_runtime
     implementation dependency_android.navigation_fragment
     implementation dependency_android.navigation_ui
+    implementation dependency_android.constraint_layout
 
     // Test
     testImplementation dependency_jvm.junit

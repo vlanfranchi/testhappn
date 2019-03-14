@@ -43,6 +43,7 @@ ext.with {
             coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
             arch_extensions        : "androidx.arch.lifecycle:extensions:$archRuntime",
             arch_compiler          : "androidx.arch.lifecycle:common-java8:$archCompiler",
+            navigation_runtime     : "androidx.navigation:navigation-runtime:$navigation",
             navigation_fragment    : "androidx.navigation:navigation-fragment:$navigation",
             navigation_ui          : "androidx.navigation:navigation-ui:$navigation",
             navigation_safe_args   : "androidx.navigation:navigation-safe-args-gradle-plugin::$navigation",
