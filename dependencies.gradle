@@ -24,6 +24,7 @@ ext.with {
     coroutines = '1.1.1'
     dagger_kapt = '2.16'
     dagger = '2.19'
+    navigation = "2.0.0-rc02"
 
     dependency_jvm = [
             kotlin_stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
@@ -42,6 +43,9 @@ ext.with {
             coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
             arch_extensions        : "android.arch.lifecycle:extensions:$archRuntime",
             arch_compiler          : "android.arch.lifecycle:common-java8:$archCompiler",
+            navigation_fragment    : "androidx.navigation:navigation-fragment:$navigation",
+            navigation_ui          : "androidx.navigation:navigation-ui:$navigation",
+            navigation_safe_args   : "androidx.navigation:navigation-safe-args-gradle-plugin::$navigation",
             appcompat              : "com.android.support:appcompat-v7:$appcompat",
             design                 : "com.android.support:design:$design",
             cardview               : "com.android.support:cardview-v7:$appcompat",

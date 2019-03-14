@@ -10,6 +10,7 @@ allprojects {
         dependencies {
             classpath "com.android.tools.build:gradle:$gradle_version"
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlins"
+            classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-rc02"
         }
     }
 
