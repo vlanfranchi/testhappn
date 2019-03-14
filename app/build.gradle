@@ -24,6 +24,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Modules
+    implementation project(':usecases')
+    implementation project(':data')
+    implementation project(':domain')
+
     // JVM dependencies
     implementation dependency_jvm.kotlin_stdlib
 
@@ -42,6 +48,7 @@ dependencies {
     // DI
     kapt dependency_android.dagger_compiler
     implementation dependency_android.dagger
+
     // Test
     testImplementation dependency_jvm.junit
     testImplementation dependency_jvm.kotlin_junit
@@ -50,4 +57,5 @@ dependencies {
     androidTestImplementation(dependency_android.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    
 }
