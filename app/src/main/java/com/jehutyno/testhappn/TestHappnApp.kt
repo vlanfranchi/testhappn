@@ -2,8 +2,10 @@ package com.jehutyno.testhappn
 
 import android.app.Application
 import com.jehutyno.testhappn.di.component.AppComponent
+import com.jehutyno.testhappn.di.component.ArticlesComponent
 import com.jehutyno.testhappn.di.component.DaggerAppComponent
 import com.jehutyno.testhappn.di.module.AppModule
+import com.jehutyno.testhappn.di.module.ArticlesModule
 
 class TestHappnApp: Application() {
 
@@ -13,6 +15,8 @@ class TestHappnApp: Application() {
             .appModule(AppModule(this))
             .build()
     }
+
+    val articlesComponent: ArticlesComponent by lazy { appComponent.plus(ArticlesModule()) }
 
     override fun onCreate() {
         super.onCreate()

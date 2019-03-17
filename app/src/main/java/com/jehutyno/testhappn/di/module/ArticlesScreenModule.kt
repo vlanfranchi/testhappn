@@ -4,7 +4,6 @@ import com.jehutyno.data.ArticlesRepository
 import com.jehutyno.testhappn.di.scope.ArticlesScreenScope
 import com.jehutyno.testhappn.ui.articles.ArticlesFragment
 import com.jehutyno.testhappn.ui.articles.ArticlesPresenter
-import com.jehutyno.testhappn.ui.articles.ArticlesView
 import com.jehutyno.usecases.GetArticles
 import com.jehutyno.usecases.RequestNewArticles
 import dagger.Module
@@ -20,7 +19,7 @@ class ArticlesScreenModule(val articlesFragment: ArticlesFragment) {
     @Provides
     @ArticlesScreenScope
     fun provideArticlesPresenter(
-        articlesView: ArticlesView,
+        articlesView: ArticlesFragment,
         getArticles: GetArticles,
         requestNewArticles: RequestNewArticles
     ) = ArticlesPresenter(articlesView, getArticles, requestNewArticles)
