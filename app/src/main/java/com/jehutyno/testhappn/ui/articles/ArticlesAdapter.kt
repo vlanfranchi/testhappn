@@ -32,7 +32,7 @@ class ArticlesAdapter(private val context: Context) : RecyclerView.Adapter<Artic
             holder.description.text = description
             holder.author.text = author
             holder.date.text = pubDate
-            Picasso.get().load(thumbnail).into(holder.thumbnail)
+            Picasso.get().load(thumbnail).placeholder(R.drawable.placeholder).into(holder.thumbnail)
             holder.bookmark.isChecked = favorite_id != null
         }
     }
