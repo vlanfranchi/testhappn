@@ -1,5 +1,6 @@
 package com.jehutyno.testhappn.ui.articles
 
+import com.jehutyno.testhappn.R
 import com.jehutyno.usecases.GetArticles
 import com.jehutyno.usecases.RequestNewArticles
 import kotlinx.coroutines.*
@@ -31,7 +32,10 @@ class ArticlesPresenter(
             val articles = withContext(Dispatchers.Default) {
                 requestNewArticles()
             }
-            view?.renderArticles(ArticleConverter.convert(articles))
+            if (articles.isNotEmpty()) 
+                view?.renderArticles(ArticleConverter.convert(articles))
+            else
+                view?.renderEmpty()
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")
             println("HTTP error: ${e.code()}")

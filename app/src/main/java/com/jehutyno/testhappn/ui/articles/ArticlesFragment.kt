@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jehutyno.domain.model.Article
 import com.jehutyno.testhappn.R
 import com.jehutyno.testhappn.di.component.ArticlesScreenComponent
 import com.jehutyno.testhappn.di.module.ArticlesScreenModule
@@ -69,4 +68,8 @@ class ArticlesFragment : Fragment(), ArticlesView {
         message.text = errorMessage
     }
 
+    override fun renderEmpty() {
+        flipper.displayedChild = ArticlesView.Page.Message.ordinal
+        message.text = getString(R.string.no_articles)
+    }
 }

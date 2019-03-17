@@ -11,4 +11,5 @@ interface ArticlesView {
     fun renderProgressBar()
     fun renderArticles(articles: List<ArticleItem>?)
     fun renderError(errorMessage: String)
+    fun renderEmpty()
 }
