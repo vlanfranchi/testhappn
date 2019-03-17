@@ -10,6 +10,7 @@ class ArticlesRepository(
 
     fun getSavedArticles() = articlesPersistenceSource.getPersistedArticles()
 
+    @Throws(Exception::class)
     suspend fun requestNewArticles(): List<Article> {
         val newArticles = networkArticlesSource.getNetworkArticles()
         articlesPersistenceSource.saveArticles(newArticles)

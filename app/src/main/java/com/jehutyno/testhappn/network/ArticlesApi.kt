@@ -4,7 +4,7 @@ import com.jehutyno.domain.model.Article
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
-const val BASE_URL: String = "http://localhost"
+const val BASE_URL: String = "http://localhost:3000"
 
 interface ArticlesApi {
 

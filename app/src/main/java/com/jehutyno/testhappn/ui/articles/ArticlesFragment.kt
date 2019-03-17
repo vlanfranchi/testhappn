@@ -51,4 +51,8 @@ class ArticlesFragment : Fragment(), ArticlesView {
 
     }
 
+    override fun renderError(message: String) {
+        button.text = message
+    }
+
 }
