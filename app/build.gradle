@@ -46,6 +46,7 @@ dependencies {
     implementation dependency_android.constraint_layout
     implementation dependency_android.retrofit
     implementation dependency_android.moshi
+    implementation dependency_android.coroutine_adapter
 
     // DI
     kapt dependency_android.dagger_compiler
