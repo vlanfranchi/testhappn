@@ -35,10 +35,7 @@ ext.with {
             junit              : "junit:junit:$junit",
             kotlin_junit       : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
                                   "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
-            retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
-            moshi_converter    : "com.squareup.retrofit2:converter-moshi:$moshi",
-            serialization      : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization",
-            logging_interceptor: "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+            serialization      : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization"
     ]
 
     dependency_android = [
@@ -65,7 +62,8 @@ ext.with {
             retrofit               : "com.squareup.retrofit2:retrofit:$retrofit",
             moshi                  : "com.squareup.retrofit2:converter-moshi:$moshi",
             coroutine_adapter      : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutine_adapter",
-            picasso                : "com.squareup.picasso:picasso:$picasso"
+            picasso                : "com.squareup.picasso:picasso:$picasso",
+            logging_interceptor    : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
     ]
 
 }

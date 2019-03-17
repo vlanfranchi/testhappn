@@ -48,6 +48,7 @@ dependencies {
     implementation dependency_android.moshi
     implementation dependency_android.coroutine_adapter
     implementation dependency_android.picasso
+    implementation dependency_android.logging_interceptor
 
     // DI
     kapt dependency_android.dagger_compiler

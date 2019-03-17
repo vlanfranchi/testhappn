@@ -26,6 +26,7 @@ class ArticlesPresenter(
     }
 
     fun newTripsRequested() = launch {
+        view?.renderProgressBar()
         try {
             val trips = withContext(Dispatchers.Default) {
                 requestNewArticles()
@@ -42,6 +43,7 @@ class ArticlesPresenter(
 
     fun onDestroy() {
         job.cancel()
+        view = null
     }
 
 
