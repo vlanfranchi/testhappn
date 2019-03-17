@@ -62,7 +62,7 @@ class ArticlesPresenterTest {
         presenter.newTripsRequested()
 
         val inOrder = Mockito.inOrder(view)
-        inOrder.verify(view, times(1)).renderProgressBar()
+        inOrder.verify(view, times(1)).renderRefresh()
         inOrder.verify(view, times(1)).renderEmpty()
 
     }
@@ -80,7 +80,7 @@ class ArticlesPresenterTest {
         presenter.newTripsRequested()
 
         val inOrder = Mockito.inOrder(view)
-        inOrder.verify(view, times(1)).renderProgressBar()
+        inOrder.verify(view, times(1)).renderRefresh()
         inOrder.verify(view, times(1)).renderError(ArgumentMatchers.anyString())
 
     }
@@ -98,7 +98,7 @@ class ArticlesPresenterTest {
         presenter.newTripsRequested()
 
         val inOrder = Mockito.inOrder(view)
-        inOrder.verify(view, times(1)).renderProgressBar()
+        inOrder.verify(view, times(1)).renderRefresh()
         inOrder.verify(view, times(1)).renderArticles(ArgumentMatchers.anyList())
     }
 

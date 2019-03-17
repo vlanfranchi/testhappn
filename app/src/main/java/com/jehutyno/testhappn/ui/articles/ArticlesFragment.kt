@@ -48,6 +48,9 @@ class ArticlesFragment : Fragment(), ArticlesView {
         articlesList.layoutManager = LinearLayoutManager(mainActivity)
         articlesList.adapter = adapter
         message.setOnClickListener { navHost.navigate(R.id.action_articlesFragment_to_articleFragment) }
+        pullToRefresh.setOnRefreshListener {
+            articlesPresenter.newTripsRequested()
+        }
     }
 
     override fun onDestroy() {
@@ -55,21 +58,24 @@ class ArticlesFragment : Fragment(), ArticlesView {
         articlesPresenter.onDestroy()
     }
 
-    override fun renderProgressBar() {
-        flipper.displayedChild = ArticlesView.Page.Progress.ordinal
+    override fun renderRefresh() {
+        pullToRefresh.isRefreshing = true
     }
 
     override fun renderArticles(articles: List<ArticleItem>?) {
+        pullToRefresh.isRefreshing = false
         flipper.displayedChild = ArticlesView.Page.Content.ordinal
         adapter.update(articles)
     }
 
     override fun renderError(errorMessage: String) {
+        pullToRefresh.isRefreshing = false
         flipper.displayedChild = ArticlesView.Page.Message.ordinal
         message.text = errorMessage
     }
 
     override fun renderEmpty() {
+        pullToRefresh.isRefreshing = false
         flipper.displayedChild = ArticlesView.Page.Message.ordinal
         message.text = getString(R.string.no_articles)
     }

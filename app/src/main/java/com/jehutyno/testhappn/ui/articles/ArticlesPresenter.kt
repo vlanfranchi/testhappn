@@ -29,7 +29,7 @@ class ArticlesPresenter(
     }
 
     fun newTripsRequested() = launch {
-        view?.renderProgressBar()
+        view?.renderRefresh()
         try {
             val articles = withContext(Dispatchers.IO) {
                 requestNewArticles()
