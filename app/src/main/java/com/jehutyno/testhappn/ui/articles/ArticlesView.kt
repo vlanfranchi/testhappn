@@ -1,7 +1,5 @@
 package com.jehutyno.testhappn.ui.articles
 
-import com.jehutyno.domain.model.Article
-
 interface ArticlesView {
 
     enum class Page {
@@ -10,8 +8,7 @@ interface ArticlesView {
         Message
     }
 
-
     fun renderProgressBar()
-    fun renderArticles(articles: List<Article>)
+    fun renderArticles(articles: List<ArticleItem>?)
     fun renderError(errorMessage: String)
 }

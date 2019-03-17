@@ -4,13 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jehutyno.domain.model.Article
 import com.jehutyno.testhappn.R
 import com.squareup.picasso.Picasso
 
 class ArticlesAdapter(private val context: Context) : RecyclerView.Adapter<ArticleViewHolder>() {
 
-    private var items: List<Article> = listOf()
+    private var items: List<ArticleItem> = listOf()
 
     override fun getItemCount(): Int {
         return items.size
@@ -31,15 +30,17 @@ class ArticlesAdapter(private val context: Context) : RecyclerView.Adapter<Artic
             holder.title.text = title
             holder.description.text = description
             holder.author.text = author
-            holder.date.text = pubDate
+            holder.date.text = date
             Picasso.get().load(thumbnail).placeholder(R.drawable.placeholder).into(holder.thumbnail)
             holder.bookmark.isChecked = favorite_id != null
         }
     }
 
-    fun update(items: List<Article>) {
-        this.items = items
-        notifyDataSetChanged()
+    fun update(items: List<ArticleItem>?) {
+        items?.let {
+            this.items = it
+            notifyDataSetChanged()
+        }
     }
 
 }

@@ -20,18 +20,18 @@ class ArticlesPresenter(
     fun onCreate() {
         job = Job()
         launch {
-            val trips = withContext(Dispatchers.IO) { getArticles() }
-            view?.renderArticles(trips)
+            val articles = withContext(Dispatchers.IO) { getArticles() }
+            view?.renderArticles(ArticleConverter.convert(articles))
         }
     }
 
     fun newTripsRequested() = launch {
         view?.renderProgressBar()
         try {
-            val trips = withContext(Dispatchers.Default) {
+            val articles = withContext(Dispatchers.Default) {
                 requestNewArticles()
             }
-            view?.renderArticles(trips)
+            view?.renderArticles(ArticleConverter.convert(articles))
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")
             println("HTTP error: ${e.code()}")

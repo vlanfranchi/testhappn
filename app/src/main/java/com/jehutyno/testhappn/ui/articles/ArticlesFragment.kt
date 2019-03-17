@@ -59,7 +59,7 @@ class ArticlesFragment : Fragment(), ArticlesView {
         flipper.displayedChild = ArticlesView.Page.Progress.ordinal
     }
 
-    override fun renderArticles(articles: List<Article>) {
+    override fun renderArticles(articles: List<ArticleItem>?) {
         flipper.displayedChild = ArticlesView.Page.Content.ordinal
         adapter.update(articles)
     }
