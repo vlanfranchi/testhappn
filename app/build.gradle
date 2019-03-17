@@ -32,10 +32,13 @@ dependencies {
 
     // JVM dependencies
     implementation dependency_jvm.kotlin_stdlib
+    implementation dependency_jvm.gson
+
     // JVM Tests
     testImplementation dependency_jvm.junit
     testImplementation dependency_jvm.kotlin_junit
     testImplementation dependency_jvm.mockito
+    testImplementation dependency_jvm.coroutines_test
 
     // Android dependencies
     implementation dependency_android.appcompat

@@ -43,6 +43,7 @@ class ArticlesFragment : Fragment(), ArticlesView {
         super.onViewCreated(view, savedInstanceState)
         articlesScreenComponent.inject(this)
         articlesPresenter.onCreate()
+        articlesPresenter.loadPersistedArticles()
         articlesPresenter.newTripsRequested()
         articlesList.layoutManager = LinearLayoutManager(mainActivity)
         articlesList.adapter = adapter

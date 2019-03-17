@@ -13,7 +13,7 @@ ext.with {
     archCompiler = '2.0.0-rc01'
     retrofit = '2.4.0'
     moshi = '2.4.0'
-    serialization = '0.6.2'
+    serialization = '0.10.0'
     constraintLayout = '1.1.2'
     logging_interceptor = '3.9.1'
     junit = '4.12'
@@ -23,25 +23,30 @@ ext.with {
     stetho = '1.5.0'
     testRules = '1.1.0'
     coroutines = '1.1.1'
+    coroutine_test = "1.1.1"
+    coroutine_adapter = "0.9.2"
     dagger_kapt = '2.19'
     dagger = '2.19'
     navigation = "2.0.0-rc02"
-    coroutine_adapter = "0.9.2"
     picasso = "2.71828"
     rules = "1.1.1"
     truth = "1.1.0"
     junit_android = "1.1.0"
     mockito = "2.25.1"
     mockito_android = "2.25.1"
+    gson = "2.8.5"
 
     dependency_jvm = [
-            kotlin_stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
-            kotlin_reflect     :"org.jetbrains.kotlin:kotlin-reflect:$kotlins",
-            coroutines         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
-            junit              : "junit:junit:$junit",
-            kotlin_junit       : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
+            kotlin_stdlib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
+            kotlin_reflect         :"org.jetbrains.kotlin:kotlin-reflect:$kotlins",
+            coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            coroutines_test        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines",
+            junit                  : "junit:junit:$junit",
+            kotlin_junit           : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
                                   "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
-            mockito            : "org.mockito:mockito-core:$mockito"
+            mockito                : "org.mockito:mockito-core:$mockito",
+            kotlin_serialization   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization",
+            gson                   : "com.google.code.gson:gson:$gson"
     ]
 
     dependency_android = [
@@ -74,7 +79,8 @@ ext.with {
             rules                  : "androidx.test:rules:$rules",
             truth                  : "androidx.test:rules:$truth",
             junit_android          : "androidx.test.ext:junit:$junit_android",
-            mockito_android        : "org.mockito:mockito-android:$mockito_android"
+            mockito_android        : "org.mockito:mockito-android:$mockito_android",
+
     ]
 
 }

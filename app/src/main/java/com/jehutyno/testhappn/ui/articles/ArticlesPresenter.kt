@@ -1,6 +1,5 @@
 package com.jehutyno.testhappn.ui.articles
 
-import com.jehutyno.testhappn.R
 import com.jehutyno.usecases.GetArticles
 import com.jehutyno.usecases.RequestNewArticles
 import kotlinx.coroutines.*
@@ -20,6 +19,9 @@ class ArticlesPresenter(
 
     fun onCreate() {
         job = Job()
+    }
+
+    fun loadPersistedArticles() {
         launch {
             val articles = withContext(Dispatchers.IO) { getArticles() }
             view?.renderArticles(ArticleConverter.convert(articles))
@@ -29,7 +31,7 @@ class ArticlesPresenter(
     fun newTripsRequested() = launch {
         view?.renderProgressBar()
         try {
-            val articles = withContext(Dispatchers.Default) {
+            val articles = withContext(Dispatchers.IO) {
                 requestNewArticles()
             }
             if (articles.isNotEmpty()) 
