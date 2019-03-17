@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 const val BASE_URL: String = "localhost"
 
-interface BlablacarApi {
+interface ArticlesApi {
 
     @GET("/articles")
     fun getTripsAsync(): Deferred<List<Article>>

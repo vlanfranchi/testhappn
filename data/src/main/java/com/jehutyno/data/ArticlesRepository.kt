@@ -4,7 +4,7 @@ import com.jehutyno.domain.model.Article
 
 
 class ArticlesRepository(
-    private val articlesPersistenceSource: ArticlesPersistenceSource,
+    private val articlesPersistenceSource: PersistenceArticlesSource,
     private val networkArticlesSource: NetworkArticlesSource
 ) {
 
