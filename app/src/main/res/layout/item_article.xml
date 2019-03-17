@@ -60,14 +60,15 @@
 
     />
 
-    <ImageView android:id="@+id/bookmark"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:padding="8dp"
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               android:tint="@color/colorPrimaryDark"
-               android:src="@drawable/ic_bookmark_border"
+    <CheckBox android:id="@+id/bookmark"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="8dp"
+              android:button="@drawable/check_bookmark"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              android:tint="@color/colorPrimaryDark"
+              android:src="@drawable/ic_bookmark_border"
     />
 
 
