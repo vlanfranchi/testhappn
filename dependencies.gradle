@@ -1,7 +1,7 @@
 ext.with {
 
     compileSdk = 28
-    minSdk = 17
+    minSdk = 19
     targetSdk = 28
     versioningCode = 1
     versioning = '0.0.1'
