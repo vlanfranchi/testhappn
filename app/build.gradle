@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -32,6 +32,9 @@ dependencies {
 
     // JVM dependencies
     implementation dependency_jvm.kotlin_stdlib
+    // JVM Tests
+    testImplementation dependency_jvm.junit
+    testImplementation dependency_jvm.kotlin_junit
 
     // Android dependencies
     implementation dependency_android.appcompat
@@ -49,18 +52,15 @@ dependencies {
     implementation dependency_android.coroutine_adapter
     implementation dependency_android.picasso
     implementation dependency_android.logging_interceptor
-
     // DI
     kapt dependency_android.dagger_compiler
     implementation dependency_android.dagger
-
-    // Test
-    testImplementation dependency_jvm.junit
-    testImplementation dependency_jvm.kotlin_junit
-    androidTestImplementation dependency_jvm.junit
-    androidTestImplementation dependency_jvm.kotlin_junit
+    // Android Tests
+    androidTestImplementation dependency_android.test_runner
     androidTestImplementation(dependency_android.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestImplementation dependency_android.truth
+    androidTestImplementation dependency_android.junit_android
 
 }
