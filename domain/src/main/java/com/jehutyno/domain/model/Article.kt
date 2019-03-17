@@ -1,10 +1,8 @@
 package com.jehutyno.domain.model
 
-import java.util.*
-
 data class Article(
     val title: String,
-    val pubDate: Date,
+    val pubDate: String,
     val link: String,
     val description: String,
     val guid: String,

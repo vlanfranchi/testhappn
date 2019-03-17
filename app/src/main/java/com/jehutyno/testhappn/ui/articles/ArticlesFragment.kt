@@ -38,7 +38,7 @@ class ArticlesFragment : Fragment(), ArticlesView {
         super.onViewCreated(view, savedInstanceState)
         articlesScreenComponent.inject(this)
         articlesPresenter.onCreate()
-
+        articlesPresenter.newTripsRequested()
         button.setOnClickListener { navHost.navigate(R.id.action_articlesFragment_to_articleFragment) }
     }
 
