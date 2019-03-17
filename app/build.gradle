@@ -35,6 +35,7 @@ dependencies {
     // JVM Tests
     testImplementation dependency_jvm.junit
     testImplementation dependency_jvm.kotlin_junit
+    testImplementation dependency_jvm.mockito
 
     // Android dependencies
     implementation dependency_android.appcompat
@@ -62,5 +63,6 @@ dependencies {
     })
     androidTestImplementation dependency_android.truth
     androidTestImplementation dependency_android.junit_android
+    androidTestImplementation dependency_android.mockito_android
 
 }

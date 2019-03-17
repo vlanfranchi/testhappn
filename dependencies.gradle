@@ -31,6 +31,8 @@ ext.with {
     rules = "1.1.1"
     truth = "1.1.0"
     junit_android = "1.1.0"
+    mockito = "2.25.1"
+    mockito_android = "2.25.1"
 
     dependency_jvm = [
             kotlin_stdlib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
@@ -39,7 +41,7 @@ ext.with {
             junit              : "junit:junit:$junit",
             kotlin_junit       : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
                                   "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
-            serialization      : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization"
+            mockito            : "org.mockito:mockito-core:$mockito"
     ]
 
     dependency_android = [
@@ -71,7 +73,8 @@ ext.with {
             logging_interceptor    : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor",
             rules                  : "androidx.test:rules:$rules",
             truth                  : "androidx.test:rules:$truth",
-            junit_android          : "androidx.test.ext:junit:$junit_android"
+            junit_android          : "androidx.test.ext:junit:$junit_android",
+            mockito_android        : "org.mockito:mockito-android:$mockito_android"
     ]
 
 }
