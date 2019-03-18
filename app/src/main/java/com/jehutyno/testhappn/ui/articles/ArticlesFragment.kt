@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.jehutyno.testhappn.R
 import com.jehutyno.testhappn.di.component.ArticlesScreenComponent
 import com.jehutyno.testhappn.di.module.ArticlesScreenModule
@@ -43,14 +44,15 @@ class ArticlesFragment : Fragment(), ArticlesView {
         super.onViewCreated(view, savedInstanceState)
         articlesScreenComponent.inject(this)
         articlesPresenter.onCreate()
-        articlesPresenter.loadPersistedArticles()
-        articlesPresenter.newTripsRequested()
+        flipper.displayedChild = ArticlesView.Page.Content.ordinal
         articlesList.layoutManager = LinearLayoutManager(mainActivity)
         articlesList.adapter = adapter
         message.setOnClickListener { navHost.navigate(R.id.action_articlesFragment_to_articleFragment) }
         pullToRefresh.setOnRefreshListener {
             articlesPresenter.newTripsRequested()
         }
+        articlesPresenter.loadPersistedArticles()
+        articlesPresenter.newTripsRequested()
     }
 
     override fun onDestroy() {
@@ -70,13 +72,11 @@ class ArticlesFragment : Fragment(), ArticlesView {
 
     override fun renderError(errorMessage: String) {
         pullToRefresh.isRefreshing = false
-        flipper.displayedChild = ArticlesView.Page.Message.ordinal
-        message.text = errorMessage
+        Snackbar.make(pullToRefresh, errorMessage, Snackbar.LENGTH_LONG).show()
     }
 
     override fun renderEmpty() {
         pullToRefresh.isRefreshing = false
-        flipper.displayedChild = ArticlesView.Page.Message.ordinal
-        message.text = getString(R.string.no_articles)
+        Snackbar.make(pullToRefresh, getString(R.string.no_articles), Snackbar.LENGTH_LONG).show()
     }
 }
