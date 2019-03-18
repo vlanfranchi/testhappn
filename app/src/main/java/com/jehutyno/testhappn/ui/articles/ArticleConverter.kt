@@ -9,6 +9,7 @@ object ArticleConverter: Converter<Article, ArticleItem> {
 
     override fun convert(input: Article): ArticleItem {
         return ArticleItem(
+            id = input._id,
             title = input.title,
             description = input.description,
             date = input.pubDate.toISO8601().toHumanSlash(),

@@ -9,7 +9,7 @@
               android:name="com.jehutyno.testhappn.ui.articles.ArticlesFragment"
               tools:layout="@layout/fragment_articles"
               android:label="@string/articles_title">
-        <action android:id="@+id/action_articlesFragment_to_articleFragment" app:destination="@id/articleFragment"
+        <action android:id="@+id/showDetails" app:destination="@id/articleFragment"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"
                 app:popUpTo="@+id/articlesFragment"/>

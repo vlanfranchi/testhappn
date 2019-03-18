@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_articles.*
 import javax.inject.Inject
 
 
-class ArticlesFragment : Fragment(), ArticlesView {
+class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClickListener {
 
     private val navHost by lazy { findNavController(this) }
 
@@ -28,7 +28,7 @@ class ArticlesFragment : Fragment(), ArticlesView {
     @Inject
     lateinit var articlesPresenter: ArticlesPresenter
 
-    private val adapter: ArticlesAdapter by lazy { ArticlesAdapter(mainActivity) }
+    private val adapter: ArticlesAdapter by lazy { ArticlesAdapter(mainActivity, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,6 @@ class ArticlesFragment : Fragment(), ArticlesView {
         flipper.displayedChild = ArticlesView.Page.Content.ordinal
         articlesList.layoutManager = GridLayoutManager(mainActivity, 2)
         articlesList.adapter = adapter
-        message.setOnClickListener { navHost.navigate(com.jehutyno.testhappn.R.id.action_articlesFragment_to_articleFragment) }
         pullToRefresh.setOnRefreshListener {
             articlesPresenter.newTripsRequested()
         }
@@ -89,5 +88,9 @@ class ArticlesFragment : Fragment(), ArticlesView {
     override fun renderEmpty() {
         pullToRefresh.isRefreshing = false
         Snackbar.make(pullToRefresh, getString(com.jehutyno.testhappn.R.string.no_articles), Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onArticleClickListener(articleId: String) {
+        navHost.navigate(ArticlesFragmentDirections.showDetails(articleId))
     }
 }
