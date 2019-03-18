@@ -6,15 +6,50 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jehutyno.testhappn.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_details.*
+import javax.inject.Inject
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : Fragment(), DetailsView {
+
+    @Inject
+    lateinit var detailsPresenter: DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        detailsPresenter.onCreate()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        detailsPresenter.onDestroy()
+    }
+
+    override fun renderTitle(title: String) {
+        titleTv.text = title
+    }
+
+    override fun renderContent(content: String) {
+        contentTv.text = content
+    }
+
+    override fun renderCategories(categories: String) {
+        categoriesTv.text = categories
+    }
+
+    override fun renderDate(date: String) {
+        dateTv.text = date
+    }
+
+    override fun renderAuthor(author: String) {
+        authorTv.text = author
+    }
+
+    override fun renderThumbnail(url: String) {
+        Picasso.get().load(url).placeholder(R.drawable.placeholder).into(thumbnailTv)
+    }
 }

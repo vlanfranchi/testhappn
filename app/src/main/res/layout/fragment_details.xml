@@ -11,11 +11,11 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent" android:layout_height="wrap_content">
 
-        <TextView android:id="@+id/title"
+        <TextView android:id="@+id/titleTv"
                   tools:text="Title"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toStartOf="@id/bookmark"
-                  app:layout_constraintTop_toBottomOf="@id/thumbnail"
+                  app:layout_constraintTop_toBottomOf="@id/thumbnailTv"
                   android:maxLines="2"
                   android:ellipsize="end"
                   android:paddingTop="4dp"
@@ -25,11 +25,11 @@
                   android:layout_height="wrap_content"
                   style="@style/Title"/>
 
-        <TextView android:id="@+id/categories"
+        <TextView android:id="@+id/categoriesTv"
                   tools:text="#fun #lol #news"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintTop_toBottomOf="@id/title"
+                  app:layout_constraintTop_toBottomOf="@id/titleTv"
                   android:maxLines="2"
                   android:ellipsize="end"
                   style="@style/Categories"
@@ -41,12 +41,12 @@
                   android:layout_height="wrap_content"
         />
 
-        <TextView android:id="@+id/content"
+        <TextView android:id="@+id/contentTv"
                   tools:text="lore ipsum lore ipsum lore ipsum lore ipsum lore ipsum lore ipsum lore ipsum "
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintTop_toBottomOf="@id/categories"
+                  app:layout_constraintTop_toBottomOf="@id/categoriesTv"
                   android:maxLines="2"
                   android:ellipsize="end"
                   style="@style/Content"
@@ -58,7 +58,7 @@
                   android:layout_height="wrap_content"
         />
 
-        <ImageView android:id="@+id/thumbnail"
+        <ImageView android:id="@+id/thumbnailTv"
                    android:scaleType="centerCrop"
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +69,9 @@
 
         />
 
-        <TextView android:id="@+id/date"
+        <TextView android:id="@+id/dateTv"
                   tools:text="12/12/12"
-                  app:layout_constraintBottom_toBottomOf="@id/thumbnail"
+                  app:layout_constraintBottom_toBottomOf="@id/thumbnailTv"
                   app:layout_constraintEnd_toEndOf="parent"
                   android:padding="4dp"
                   android:layout_width="wrap_content"
@@ -79,11 +79,11 @@
                   style="@style/Footnote"/>
 
 
-        <TextView android:id="@+id/author"
+        <TextView android:id="@+id/authorTv"
                   tools:text="Jean Bon"
                   app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintEnd_toStartOf="@id/date"
-                  app:layout_constraintBottom_toBottomOf="@id/thumbnail"
+                  app:layout_constraintEnd_toStartOf="@id/dateTv"
+                  app:layout_constraintBottom_toBottomOf="@id/thumbnailTv"
                   android:gravity="end"
                   android:layout_width="0dp"
                   style="@style/Footnote"
@@ -92,7 +92,7 @@
         />
 
 
-        <CheckBox android:id="@+id/bookmark"
+        <CheckBox android:id="@+id/bookmarkTv"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:padding="8dp"
