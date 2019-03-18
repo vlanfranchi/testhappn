@@ -30,10 +30,6 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
 
     private val adapter: ArticlesAdapter by lazy { ArticlesAdapter(mainActivity, this) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(com.jehutyno.testhappn.R.layout.fragment_articles, container, false)
         setHasOptionsMenu(true)

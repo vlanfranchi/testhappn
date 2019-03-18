@@ -26,13 +26,13 @@ class ArticlesScreenModule(val articlesFragment: ArticlesFragment) {
 
     @Provides
     @ArticlesScreenScope
-    fun provideGetTrips(articlesRepository: ArticlesRepository): GetArticles {
+    fun provideGetArticles(articlesRepository: ArticlesRepository): GetArticles {
         return GetArticles(articlesRepository)
     }
 
     @Provides
     @ArticlesScreenScope
-    fun provideRequestNewTrips(articlesRepository: ArticlesRepository): RequestNewArticles {
+    fun provideRequestNewArticles(articlesRepository: ArticlesRepository): RequestNewArticles {
         return RequestNewArticles(articlesRepository)
     }
 

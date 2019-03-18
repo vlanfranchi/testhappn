@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.jehutyno.testhappn.R
+import com.jehutyno.testhappn.di.component.DetailsScreenComponent
+import com.jehutyno.testhappn.di.module.DetailsScreenModule
+import com.jehutyno.testhappn.extensions.app
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import javax.inject.Inject
@@ -18,9 +21,10 @@ class DetailsFragment : Fragment(), DetailsView {
 
     private val args by navArgs<DetailsFragmentArgs>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        detailsPresenter.onCreate()
+    private val detailsScreenComponent: DetailsScreenComponent by lazy {
+        app.articlesComponent.plus(
+            DetailsScreenModule(this)
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,6 +33,8 @@ class DetailsFragment : Fragment(), DetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        detailsScreenComponent.inject(this)
+        detailsPresenter.onCreate()
         detailsPresenter.loadPersistedArticle(args.articleId)
     }
 
