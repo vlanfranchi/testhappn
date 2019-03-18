@@ -23,18 +23,19 @@ class ArticlesPresenter(
         job = Job()
     }
 
-    fun loadPersistedArticles() {
+    private fun loadPersistedArticles(query: String = "") {
         launch {
             val articles = withContext(Dispatchers.IO) { getArticles() }
             if (articles.isNullOrEmpty())
                 view?.renderEmpty()
             else {
+                val filtered = articles.filter { it.title.toLowerCase().contains(query.toLowerCase()) }
                 view?.renderArticles(
                     ArticleConverter.convert(
                         if (sortAscending)
-                            articles?.sortedBy { it.pubDate }
+                            filtered.sortedBy { it.pubDate }
                         else
-                            articles?.sortedByDescending { it.pubDate }
+                            filtered.sortedByDescending { it.pubDate }
                     )
                 )
             }
@@ -60,6 +61,10 @@ class ArticlesPresenter(
     fun switchSort() {
         sortAscending = !sortAscending
         loadPersistedArticles()
+    }
+
+    fun searchArticles(query: String) {
+        loadPersistedArticles(query)
     }
 
     fun onDestroy() {

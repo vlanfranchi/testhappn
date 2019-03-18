@@ -56,12 +56,12 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
             this.setOnQueryTextListener(
                 object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String): Boolean {
-                        println("search submit $query")
+                        articlesPresenter.searchArticles(query)
                         return false
                     }
 
-                    override fun onQueryTextChange(newText: String): Boolean {
-                        println("search change $query")
+                    override fun onQueryTextChange(query: String): Boolean {
+                        articlesPresenter.searchArticles(query)
                         return false
                     }
                 }
