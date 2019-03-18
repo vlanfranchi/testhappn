@@ -24,7 +24,7 @@ class ArticlesPresenter(
     fun loadPersistedArticles() {
         launch {
             val articles = withContext(Dispatchers.IO) { getArticles() }
-            view?.renderArticles(ArticleConverter.convert(articles))
+            view?.renderArticles(ArticleConverter.convert(articles?.sortedBy { it.pubDate }))
         }
     }
 
@@ -36,8 +36,9 @@ class ArticlesPresenter(
             }
             if (articles.isNullOrEmpty())
                 view?.renderEmpty()
-            else
-                view?.renderArticles(ArticleConverter.convert(articles))
+            else {
+                view?.renderArticles(ArticleConverter.convert( articles.sortedBy { it.pubDate }))
+            }
 
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")
