@@ -12,4 +12,7 @@ interface ArticleDAO {
 
     @Insert(onConflict = REPLACE)
     suspend fun addArticles(articles: List<ArticleRoom>?)
+
+    @Query("Delete FROM articles")
+    suspend fun deleteAllArticles()
 }

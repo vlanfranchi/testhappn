@@ -9,6 +9,7 @@ class RoomArticlesPersistenceSource(private val articlesDao: ArticleDAO) : Persi
     override suspend fun getPersistedArticles(): List<Article>? = ArticleRoomConverter.convert(articlesDao.getAllArticles())
 
     override suspend fun saveArticles(articles: List<Article>?) {
+        articlesDao.deleteAllArticles()
         articlesDao.addArticles(RoomArticleConverter.convert(articles))
     }
 }
