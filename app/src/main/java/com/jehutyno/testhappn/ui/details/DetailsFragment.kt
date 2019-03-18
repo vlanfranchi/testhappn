@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.jehutyno.testhappn.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -15,9 +16,11 @@ class DetailsFragment : Fragment(), DetailsView {
     @Inject
     lateinit var detailsPresenter: DetailsPresenter
 
+    private val args by navArgs<DetailsFragmentArgs>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        detailsPresenter.onCreate()
+        detailsPresenter.onCreate(args.articleId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,11 +36,11 @@ class DetailsFragment : Fragment(), DetailsView {
         titleTv.text = title
     }
 
-    override fun renderContent(content: String) {
+    override fun renderContent(content: String?) {
         contentTv.text = content
     }
 
-    override fun renderCategories(categories: String) {
+    override fun renderCategories(categories: String?) {
         categoriesTv.text = categories
     }
 
@@ -49,7 +52,7 @@ class DetailsFragment : Fragment(), DetailsView {
         authorTv.text = author
     }
 
-    override fun renderThumbnail(url: String) {
+    override fun renderThumbnail(url: String?) {
         Picasso.get().load(url).placeholder(R.drawable.placeholder).into(thumbnailTv)
     }
 }

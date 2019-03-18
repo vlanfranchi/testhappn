@@ -18,6 +18,12 @@
     <fragment android:id="@+id/articleFragment"
               android:name="com.jehutyno.testhappn.ui.details.DetailsFragment"
               tools:layout="@layout/fragment_details"
-              android:label="@string/detail_title"/>
+              android:label="@string/detail_title">
+        <argument
+                android:name="articleId"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null" />
+    </fragment>
 
 </navigation>
