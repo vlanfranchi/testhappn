@@ -18,6 +18,7 @@ class ArticleRoom() : Comparable<ArticleRoom> {
     var content: String? = null
     var thumbnail: String? = null
     var favoriteId: Long? = null
+    var categories: String? = null
 
     override fun compareTo(other: ArticleRoom): Int {
         return other.id.compareTo(this.id)
@@ -32,7 +33,8 @@ class ArticleRoom() : Comparable<ArticleRoom> {
         author: String,
         content: String?,
         thumbnail: String?,
-        favoriteId: Long?
+        favoriteId: Long?,
+        categories: String?
     ) : this() {
         this.id = id
         this.title = title
@@ -43,6 +45,7 @@ class ArticleRoom() : Comparable<ArticleRoom> {
         this.content = content
         this.thumbnail = thumbnail
         this.favoriteId = favoriteId
+        this.categories = categories
     }
 
 }

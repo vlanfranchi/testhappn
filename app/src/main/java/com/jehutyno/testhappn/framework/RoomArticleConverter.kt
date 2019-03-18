@@ -16,7 +16,8 @@ object RoomArticleConverter: Converter<Article, ArticleRoom> {
             author = input.author,
             content = input.content,
             thumbnail = input.thumbnail,
-            favoriteId = input.favorite_id
+            favoriteId = input.favorite_id,
+            categories = input.categories?.joinToString { "," }
         )
     }
 

@@ -16,7 +16,7 @@ object ArticleRoomConverter: Converter<ArticleRoom, Article> {
             author = input.author,
             content = input.content,
             favorite_id = input.favoriteId,
-            categories = null,
+            categories = input.categories?.split(","),
             link = input.link,
             guid = ""
         )
