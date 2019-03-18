@@ -1,6 +1,7 @@
 package com.jehutyno.domain.model
 
 data class Article(
+    val _id: String,
     val title: String,
     val pubDate: String,
     val link: String,

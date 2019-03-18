@@ -2,14 +2,13 @@ package com.jehutyno.testhappn.framework
 
 import com.jehutyno.data.PersistenceArticlesSource
 import com.jehutyno.domain.model.Article
+import com.jehutyno.testhappn.database.ArticleDAO
 
-class RoomArticlesPersistenceSource: PersistenceArticlesSource {
+class RoomArticlesPersistenceSource(private val articlesDao: ArticleDAO) : PersistenceArticlesSource {
 
-    private var articles: List<Article> = emptyList()
+    override suspend fun getPersistedArticles(): List<Article>? = ArticleRoomConverter.convert(articlesDao.getAllArticles())
 
-    override fun getPersistedArticles(): List<Article> = articles
-
-    override fun saveArticles(articles: List<Article>) {
-        this.articles = articles
+    override suspend fun saveArticles(articles: List<Article>?) {
+        articlesDao.addArticles(RoomArticleConverter.convert(articles))
     }
 }

@@ -5,7 +5,7 @@ import com.jehutyno.domain.model.Article
 
 interface PersistenceArticlesSource {
 
-    fun getPersistedArticles(): List<Article>
-    fun saveArticles(articles: List<Article>)
+    suspend fun getPersistedArticles(): List<Article>?
+    suspend fun saveArticles(articles: List<Article>?)
 
 }

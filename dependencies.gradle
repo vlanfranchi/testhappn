@@ -19,7 +19,8 @@ ext.with {
     junit = '4.12'
     espresso = '3.1.1'
     test_runner = '1.1.1'
-    room = '2.0.0-rc01'
+    room = '2.1.0-alpha04'
+    room_coroutines = '2.1.0-alpha04'
     stetho = '1.5.0'
     testRules = '1.1.0'
     coroutines = '1.1.1'
@@ -38,12 +39,12 @@ ext.with {
 
     dependency_jvm = [
             kotlin_stdlib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
-            kotlin_reflect         :"org.jetbrains.kotlin:kotlin-reflect:$kotlins",
+            kotlin_reflect         : "org.jetbrains.kotlin:kotlin-reflect:$kotlins",
             coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
             coroutines_test        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines",
             junit                  : "junit:junit:$junit",
             kotlin_junit           : ["org.jetbrains.kotlin:kotlin-test:$kotlins",
-                                  "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
+                                      "org.jetbrains.kotlin:kotlin-test-junit:$kotlins"],
             mockito                : "org.mockito:mockito-core:$mockito",
             kotlin_serialization   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization",
             gson                   : "com.google.code.gson:gson:$gson"
@@ -62,9 +63,10 @@ ext.with {
             cardview               : "androidx.cardview:cardview:$appcompat",
             recyclerview           : "androidx.recyclerview:recyclerview:$appcompat",
             constraint_layout      : "androidx.constraintlayout:constraintlayout:$constraintLayout",
-            room_runtime           : "androidx.arch.persistence.room:runtime:$room",
-            room_compiler          : "androidx.arch.persistence.room:compiler:$room",
-            room_test              : "androidx.arch.persistence.room:testing:$room",
+            room_runtime           : "androidx.room:room-runtime:$room",
+            room_compiler          : "androidx.room:room-compiler:$room",
+            room_coroutines        : "androidx.room:room-coroutines:$room_coroutines",
+            room_test              : "androidx.room:room-testing:$room",
             test_runner            : "androidx.test:runner:$test_runner",
             espresso               : "androidx.test.espresso:espresso-core:$espresso",
             stetho                 : "com.facebook.stetho:stetho:$stetho",

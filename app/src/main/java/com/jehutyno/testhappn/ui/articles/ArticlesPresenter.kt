@@ -34,15 +34,16 @@ class ArticlesPresenter(
             val articles = withContext(Dispatchers.IO) {
                 requestNewArticles()
             }
-            if (articles.isNotEmpty()) 
-                view?.renderArticles(ArticleConverter.convert(articles))
-            else
+            if (articles.isNullOrEmpty())
                 view?.renderEmpty()
+            else
+                view?.renderArticles(ArticleConverter.convert(articles))
+
         } catch (e: HttpException) {
-            view?.renderError("HTTP error: ${e.code()}")
+           // view?.renderError("HTTP error: ${e.code()}")
             println("HTTP error: ${e.code()}")
         } catch (e: Throwable) {
-            view?.renderError("Error: ${e.message} ")
+           // view?.renderError("Error: ${e.message} ")
             println("Error: ${e.message} ")
         }
     }
