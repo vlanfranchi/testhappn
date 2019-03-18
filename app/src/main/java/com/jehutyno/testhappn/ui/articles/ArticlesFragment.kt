@@ -2,6 +2,7 @@ package com.jehutyno.testhappn.ui.articles
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,7 +52,23 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(com.jehutyno.testhappn.R.menu.menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+        (menu.findItem(com.jehutyno.testhappn.R.id.search).actionView as SearchView).apply {
+            this.setOnQueryTextListener(
+                object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String): Boolean {
+                        println("search submit $query")
+                        return false
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        println("search change $query")
+                        return false
+                    }
+                }
+            )
+        }
+
+        return super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -89,4 +106,5 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
     override fun onArticleClickListener(articleId: String) {
         navHost.navigate(ArticlesFragmentDirections.showDetails(articleId))
     }
+
 }
