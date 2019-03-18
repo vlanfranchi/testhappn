@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.jehutyno.testhappn.R
 import com.jehutyno.testhappn.di.component.ArticlesScreenComponent
@@ -45,7 +45,7 @@ class ArticlesFragment : Fragment(), ArticlesView {
         articlesScreenComponent.inject(this)
         articlesPresenter.onCreate()
         flipper.displayedChild = ArticlesView.Page.Content.ordinal
-        articlesList.layoutManager = LinearLayoutManager(mainActivity)
+        articlesList.layoutManager = GridLayoutManager(mainActivity, 2)
         articlesList.adapter = adapter
         message.setOnClickListener { navHost.navigate(com.jehutyno.testhappn.R.id.action_articlesFragment_to_articleFragment) }
         pullToRefresh.setOnRefreshListener {
