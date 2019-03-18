@@ -1,4 +1,4 @@
-package com.jehutyno.data
+package com.jehutyno.data.articles
 
 import com.jehutyno.domain.model.Article
 

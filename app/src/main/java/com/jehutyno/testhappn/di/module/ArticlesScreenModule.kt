@@ -1,6 +1,6 @@
 package com.jehutyno.testhappn.di.module
 
-import com.jehutyno.data.ArticlesRepository
+import com.jehutyno.data.articles.ArticlesRepository
 import com.jehutyno.testhappn.di.scope.ArticlesScreenScope
 import com.jehutyno.testhappn.ui.articles.ArticlesFragment
 import com.jehutyno.testhappn.ui.articles.ArticlesPresenter

@@ -1,11 +1,11 @@
-package com.jehutyno.data
+package com.jehutyno.data.articles
 
 import com.jehutyno.domain.model.Article
 
 
 class ArticlesRepository(
-    private val articlesPersistenceSource: PersistenceArticlesSource,
-    private val networkArticlesSource: NetworkArticlesSource
+    private val articlesPersistenceSource: PersistenceFavoritesSource,
+    private val networkArticlesSource: NetworkFavoritesSource
 ) {
 
     suspend fun getSavedArticle(articleId: String) = articlesPersistenceSource.getPersistedArticle(articleId)
