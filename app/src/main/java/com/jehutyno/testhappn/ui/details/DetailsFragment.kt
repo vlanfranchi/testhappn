@@ -1,6 +1,7 @@
 package com.jehutyno.testhappn.ui.details
 
 import android.os.Bundle
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,7 @@ class DetailsFragment : Fragment(), DetailsView {
         titleTv.text = title
     }
 
-    override fun renderContent(content: String?) {
+    override fun renderContent(content: Spanned) {
         contentTv.text = content
     }
 
