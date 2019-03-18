@@ -20,11 +20,16 @@ class DetailsFragment : Fragment(), DetailsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        detailsPresenter.onCreate(args.articleId)
+        detailsPresenter.onCreate()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        detailsPresenter.loadPersistedArticle(args.articleId)
     }
 
     override fun onDestroy() {

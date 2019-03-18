@@ -8,6 +8,8 @@ class ArticlesRepository(
     private val networkArticlesSource: NetworkArticlesSource
 ) {
 
+    suspend fun getSavedArticle(articleId: String) = articlesPersistenceSource.getPersistedArticle(articleId)
+
     suspend fun getSavedArticles() = articlesPersistenceSource.getPersistedArticles()
 
     @Throws(Exception::class)

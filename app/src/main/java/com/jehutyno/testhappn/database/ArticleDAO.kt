@@ -7,6 +7,9 @@ import androidx.room.Query
 
 @Dao
 interface ArticleDAO {
+    @Query("Select * FROM articles WHERE id = :articleId LIMIT 1")
+    suspend fun getAllArticle(articleId: String): ArticleRoom
+
     @Query("Select * FROM articles")
     suspend fun getAllArticles(): List<ArticleRoom>
 
