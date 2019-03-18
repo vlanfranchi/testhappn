@@ -4,8 +4,8 @@ import com.jehutyno.domain.model.Article
 
 
 class ArticlesRepository(
-    private val articlesPersistenceSource: PersistenceFavoritesSource,
-    private val networkArticlesSource: NetworkFavoritesSource
+    private val articlesPersistenceSource: PersistenceArticlesSource,
+    private val networkArticlesSource: NetworkArticlesSource
 ) {
 
     suspend fun getSavedArticle(articleId: String) = articlesPersistenceSource.getPersistedArticle(articleId)

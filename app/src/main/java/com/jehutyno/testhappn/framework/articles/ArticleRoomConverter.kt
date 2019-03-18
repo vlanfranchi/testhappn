@@ -1,8 +1,8 @@
-package com.jehutyno.testhappn.framework
+package com.jehutyno.testhappn.framework.articles
 
 import com.jehutyno.domain.model.Article
 import com.jehutyno.testhappn.Converter
-import com.jehutyno.testhappn.database.ArticleRoom
+import com.jehutyno.testhappn.database.articles.ArticleRoom
 
 object ArticleRoomConverter: Converter<ArticleRoom, Article> {
 

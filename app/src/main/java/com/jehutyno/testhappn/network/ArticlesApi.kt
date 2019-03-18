@@ -9,6 +9,6 @@ const val BASE_URL: String = "http://192.168.1.48:3000"
 interface ArticlesApi {
 
     @GET("/articles")
-    fun getTripsAsync(): Deferred<List<Article>>
+    fun getArticlesAsync(): Deferred<List<Article>>
 
 }

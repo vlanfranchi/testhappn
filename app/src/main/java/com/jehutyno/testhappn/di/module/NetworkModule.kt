@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.jehutyno.testhappn.BuildConfig
 import com.jehutyno.testhappn.network.ArticlesApi
 import com.jehutyno.testhappn.network.BASE_URL
+import com.jehutyno.testhappn.network.FavoritesApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -19,6 +20,12 @@ class NetworkModule {
     @Singleton
     internal fun provideArticlesApi(retrofit: Retrofit): ArticlesApi {
         return retrofit.create(ArticlesApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideFavoritesApi(retrofit: Retrofit): FavoritesApi {
+        return retrofit.create(FavoritesApi::class.java)
     }
 
     @Provides

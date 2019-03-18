@@ -1,4 +1,4 @@
-package com.jehutyno.testhappn.database
+package com.jehutyno.testhappn.database.articles
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
