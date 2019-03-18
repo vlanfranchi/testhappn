@@ -1,9 +1,7 @@
 package com.jehutyno.testhappn.ui.articles
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +35,9 @@ class ArticlesFragment : Fragment(), ArticlesView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_articles, container, false)
+        val view = inflater.inflate(com.jehutyno.testhappn.R.layout.fragment_articles, container, false)
+        setHasOptionsMenu(true)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,12 +47,23 @@ class ArticlesFragment : Fragment(), ArticlesView {
         flipper.displayedChild = ArticlesView.Page.Content.ordinal
         articlesList.layoutManager = LinearLayoutManager(mainActivity)
         articlesList.adapter = adapter
-        message.setOnClickListener { navHost.navigate(R.id.action_articlesFragment_to_articleFragment) }
+        message.setOnClickListener { navHost.navigate(com.jehutyno.testhappn.R.id.action_articlesFragment_to_articleFragment) }
         pullToRefresh.setOnRefreshListener {
             articlesPresenter.newTripsRequested()
         }
-        articlesPresenter.loadPersistedArticles()
         articlesPresenter.newTripsRequested()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(com.jehutyno.testhappn.R.menu.menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.sort -> articlesPresenter.switchSort()
+        }
+        return true
     }
 
     override fun onDestroy() {
@@ -77,6 +88,6 @@ class ArticlesFragment : Fragment(), ArticlesView {
 
     override fun renderEmpty() {
         pullToRefresh.isRefreshing = false
-        Snackbar.make(pullToRefresh, getString(R.string.no_articles), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(pullToRefresh, getString(com.jehutyno.testhappn.R.string.no_articles), Snackbar.LENGTH_LONG).show()
     }
 }

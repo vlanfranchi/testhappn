@@ -17,6 +17,8 @@ class ArticlesPresenter(
 
     private lateinit var job: Job
 
+    private var sortAscending = true
+
     fun onCreate() {
         job = Job()
     }
@@ -24,22 +26,28 @@ class ArticlesPresenter(
     fun loadPersistedArticles() {
         launch {
             val articles = withContext(Dispatchers.IO) { getArticles() }
-            view?.renderArticles(ArticleConverter.convert(articles?.sortedBy { it.pubDate }))
+            if (articles.isNullOrEmpty())
+                view?.renderEmpty()
+            else {
+                view?.renderArticles(
+                    ArticleConverter.convert(
+                        if (sortAscending)
+                            articles?.sortedBy { it.pubDate }
+                        else
+                            articles?.sortedByDescending { it.pubDate }
+                    )
+                )
+            }
         }
     }
 
     fun newTripsRequested() = launch {
         view?.renderRefresh()
         try {
-            val articles = withContext(Dispatchers.IO) {
+            withContext(Dispatchers.IO) {
                 requestNewArticles()
             }
-            if (articles.isNullOrEmpty())
-                view?.renderEmpty()
-            else {
-                view?.renderArticles(ArticleConverter.convert( articles.sortedBy { it.pubDate }))
-            }
-
+            loadPersistedArticles()
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")
             println("HTTP error: ${e.code()}")
@@ -49,10 +57,14 @@ class ArticlesPresenter(
         }
     }
 
+    fun switchSort() {
+        sortAscending = !sortAscending
+        loadPersistedArticles()
+    }
+
     fun onDestroy() {
         job.cancel()
         view = null
     }
-
 
 }
