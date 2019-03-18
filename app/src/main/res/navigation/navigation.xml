@@ -16,8 +16,8 @@
     </fragment>
 
     <fragment android:id="@+id/articleFragment"
-              android:name="com.jehutyno.testhappn.ui.article.ArticleFragment"
-              tools:layout="@layout/fragment_article"
+              android:name="com.jehutyno.testhappn.ui.details.DetailsFragment"
+              tools:layout="@layout/fragment_details"
               android:label="@string/detail_title"/>
 
 </navigation>
