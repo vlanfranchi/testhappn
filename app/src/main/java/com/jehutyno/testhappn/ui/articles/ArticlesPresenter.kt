@@ -22,18 +22,23 @@ class ArticlesPresenter(
     private lateinit var job: Job
 
     private var sortAscending = true
+    private var sortFavorites = false
+    private var currentSearch = ""
 
     fun onCreate() {
         job = Job()
     }
 
     private fun loadPersistedArticles(query: String = "") {
+        currentSearch = query
         launch {
             val articles = withContext(Dispatchers.IO) { getArticles() }
             if (articles.isNullOrEmpty())
                 view?.renderEmpty()
             else {
-                val filtered = articles.filter { it.title.toLowerCase().contains(query.toLowerCase()) }
+                var filtered = articles.filter { it.title.toLowerCase().contains(currentSearch.toLowerCase()) }
+                if (sortFavorites)
+                    filtered = filtered.filter { it.favorite_id != null }
                 view?.renderArticles(
                     ArticleConverter.convert(
                         if (sortAscending)
@@ -67,6 +72,11 @@ class ArticlesPresenter(
         loadPersistedArticles()
     }
 
+    fun switchFavorites() {
+        sortFavorites = !sortFavorites
+        loadPersistedArticles()
+    }
+
     fun searchArticles(query: String) {
         loadPersistedArticles(query)
     }
@@ -78,6 +88,8 @@ class ArticlesPresenter(
                     removeFavorite(articleId, favoriteId)
                 }
                 view?.renderFavoriteDeleteSuccess(articleId)
+                if (sortFavorites)
+                    loadPersistedArticles(currentSearch)
             } else {
                 val favorite = withContext(Dispatchers.IO) {
                     addFavorite(articleId)

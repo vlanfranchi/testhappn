@@ -74,6 +74,7 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.sort -> articlesPresenter.switchSort()
+            R.id.bookmarks -> articlesPresenter.switchFavorites()
         }
         return true
     }
