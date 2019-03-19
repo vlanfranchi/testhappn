@@ -1,6 +1,6 @@
 package com.jehutyno.usecases
 
-import com.jehutyno.data.articles.FavoritesRepository
+import com.jehutyno.data.favorites.FavoritesRepository
 import com.jehutyno.domain.model.Favorite
 
 class RequestNewFavorites(private val favoritesRepository: FavoritesRepository) {

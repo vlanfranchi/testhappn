@@ -10,5 +10,8 @@ interface DetailsView {
     fun renderDate(date: String)
     fun renderAuthor(author: String)
     fun renderThumbnail(url: String?)
-
+    fun renderFavorite(checked: Boolean)
+    fun renderFavoriteAddSuccess()
+    fun renderFavoriteDeleteSuccess()
+    fun renderError(errorMessage: String)
 }

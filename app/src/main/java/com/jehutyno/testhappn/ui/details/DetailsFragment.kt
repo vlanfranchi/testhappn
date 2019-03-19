@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.jehutyno.testhappn.R
 import com.jehutyno.testhappn.di.component.DetailsScreenComponent
 import com.jehutyno.testhappn.di.module.DetailsScreenModule
@@ -37,6 +38,9 @@ class DetailsFragment : Fragment(), DetailsView {
         detailsScreenComponent.inject(this)
         detailsPresenter.onCreate()
         detailsPresenter.loadPersistedArticle(args.articleId)
+        bookmarkTv.setOnClickListener {
+            detailsPresenter.switchFavorite(args.articleId)
+        }
     }
 
     override fun onDestroy() {
@@ -67,4 +71,23 @@ class DetailsFragment : Fragment(), DetailsView {
     override fun renderThumbnail(url: String?) {
         Picasso.get().load(url).placeholder(R.drawable.placeholder).into(thumbnailTv)
     }
+
+    override fun renderFavorite(checked: Boolean) {
+        bookmarkTv.isChecked = checked
+    }
+
+    override fun renderFavoriteAddSuccess() {
+        Snackbar.make(container, getString(R.string.favorite_add_success), Snackbar.LENGTH_LONG).show()
+        bookmarkTv.isChecked = true
+    }
+
+    override fun renderFavoriteDeleteSuccess() {
+        Snackbar.make(container, getString(R.string.favorite_delete_success), Snackbar.LENGTH_LONG).show()
+        bookmarkTv.isChecked = false
+    }
+
+    override fun renderError(errorMessage: String) {
+        Snackbar.make(container, errorMessage, Snackbar.LENGTH_LONG).show()
+    }
+
 }

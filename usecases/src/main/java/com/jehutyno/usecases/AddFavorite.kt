@@ -1,7 +1,7 @@
 package com.jehutyno.usecases
 
-import com.jehutyno.data.articles.FavoritesRepository
+import com.jehutyno.data.favorites.FavoritesRepository
 
 class AddFavorite(private val favoritesRepository: FavoritesRepository) {
-    suspend operator fun invoke(favoriteId: String) = favoritesRepository.requestAddFavorites(favoriteId)
+    suspend operator fun invoke(articleId: String) = favoritesRepository.requestAddFavorites(articleId)
 }

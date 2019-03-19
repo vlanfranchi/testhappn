@@ -8,7 +8,7 @@ interface PersistenceFavoritesSource {
     suspend fun getPersistedFavorite(favoriteId: String): Favorite?
     suspend fun getPersistedFavorites(): List<Favorite>?
     suspend fun saveFavorites(favorites: List<Favorite>?)
-    suspend fun saveFavorite(favorite: Favorite)
-    suspend fun deleteFavorite(favorite: Favorite)
+    suspend fun saveFavorite(articleId: String, favoriteId: String)
+    suspend fun deleteFavorite(articleId: String, favoriteId: String)
 
 }

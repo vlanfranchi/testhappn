@@ -1,6 +1,6 @@
-package com.jehutyno.data.articles
+package com.jehutyno.data.favorites
 
-import com.jehutyno.data.favorites.NetworkFavoritesSource
+import com.jehutyno.data.articles.PersistenceFavoritesSource
 import com.jehutyno.domain.model.AddFavoriteRequest
 import com.jehutyno.domain.model.Favorite
 
@@ -22,16 +22,16 @@ class FavoritesRepository(
     }
 
     @Throws(Exception::class)
-    suspend fun requestAddFavorites(favoriteId: String): Favorite {
-        val response = networkFavoritesSource.addNetworkFavorite(AddFavoriteRequest(favoriteId))
-        favoritePersistenceSource.saveFavorite(Favorite(favoriteId))
+    suspend fun requestAddFavorites(articleId: String): Favorite {
+        val response = networkFavoritesSource.addNetworkFavorite(AddFavoriteRequest(articleId))
+        favoritePersistenceSource.saveFavorite(articleId, response._id)
         return response
     }
 
     @Throws(Exception::class)
-    suspend fun requestRemoveFavorites(favoriteId: String) {
+    suspend fun requestRemoveFavorites(articleId: String, favoriteId: String) {
         val response = networkFavoritesSource.removeNetworkFavorite(favoriteId)
-        favoritePersistenceSource.deleteFavorite(Favorite(favoriteId))
+        favoritePersistenceSource.deleteFavorite(articleId, favoriteId)
         return response
     }
 

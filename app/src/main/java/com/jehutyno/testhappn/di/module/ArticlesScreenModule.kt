@@ -1,7 +1,6 @@
 package com.jehutyno.testhappn.di.module
 
 import com.jehutyno.data.articles.ArticlesRepository
-import com.jehutyno.data.articles.FavoritesRepository
 import com.jehutyno.testhappn.di.scope.ArticlesScreenScope
 import com.jehutyno.testhappn.ui.articles.ArticlesFragment
 import com.jehutyno.testhappn.ui.articles.ArticlesPresenter
@@ -39,18 +38,6 @@ class ArticlesScreenModule(val articlesFragment: ArticlesFragment) {
     @ArticlesScreenScope
     fun provideRequestNewArticles(articlesRepository: ArticlesRepository): RequestNewArticles {
         return RequestNewArticles(articlesRepository)
-    }
-
-    @Provides
-    @ArticlesScreenScope
-    fun provideAddFavorite(favoritesRepository: FavoritesRepository): AddFavorite {
-        return AddFavorite(favoritesRepository)
-    }
-
-    @Provides
-    @ArticlesScreenScope
-    fun provideRemoveFavorite(favoritesRepository: FavoritesRepository): RemoveFavorite {
-        return RemoveFavorite(favoritesRepository)
     }
 
 }

@@ -75,7 +75,7 @@ class ArticlesPresenter(
         try {
             if (favoriteId != null) {
                 withContext(Dispatchers.IO) {
-                    removeFavorite(favoriteId)
+                    removeFavorite(articleId, favoriteId)
                 }
                 view?.renderFavoriteDeleteSuccess(articleId)
             } else {

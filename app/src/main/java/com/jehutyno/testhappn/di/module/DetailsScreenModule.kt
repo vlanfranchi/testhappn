@@ -4,7 +4,9 @@ import com.jehutyno.data.articles.ArticlesRepository
 import com.jehutyno.testhappn.di.scope.DetailsScreenScope
 import com.jehutyno.testhappn.ui.details.DetailsFragment
 import com.jehutyno.testhappn.ui.details.DetailsPresenter
+import com.jehutyno.usecases.AddFavorite
 import com.jehutyno.usecases.GetArticle
+import com.jehutyno.usecases.RemoveFavorite
 import dagger.Module
 import dagger.Provides
 
@@ -19,8 +21,10 @@ class DetailsScreenModule(val detailsFragment: DetailsFragment) {
     @DetailsScreenScope
     fun provideDetailsPresenter(
         detailsView: DetailsFragment,
-        getArticle: GetArticle
-        ) = DetailsPresenter(detailsView, getArticle)
+        getArticle: GetArticle,
+        addFavorite: AddFavorite,
+        removeFavorite: RemoveFavorite
+        ) = DetailsPresenter(detailsView, getArticle, addFavorite, removeFavorite)
 
     @Provides
     @DetailsScreenScope
