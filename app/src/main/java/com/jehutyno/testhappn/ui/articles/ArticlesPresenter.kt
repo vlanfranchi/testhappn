@@ -64,17 +64,17 @@ class ArticlesPresenter(
             view?.renderError("Error: ${e.message} ")
             println("Error: ${e.message} ")
         }
-        loadPersistedArticles()
+        loadPersistedArticles(currentSearch)
     }
 
     fun switchSort() {
         sortAscending = !sortAscending
-        loadPersistedArticles()
+        loadPersistedArticles(currentSearch)
     }
 
     fun switchFavorites() {
         sortFavorites = !sortFavorites
-        loadPersistedArticles()
+        loadPersistedArticles(currentSearch)
     }
 
     fun searchArticles(query: String) {
