@@ -70,6 +70,9 @@ dependencies {
     implementation dependency_android.room_runtime
     kapt dependency_android.room_compiler
     implementation dependency_android.room_coroutines
+    debugImplementation (dependency_android.leak_canary) {
+        exclude module: 'support-compat'
+    }
     // DI
     kapt dependency_android.dagger_compiler
     implementation dependency_android.dagger

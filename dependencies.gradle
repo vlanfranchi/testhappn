@@ -36,6 +36,7 @@ ext.with {
     mockito = "2.25.1"
     mockito_android = "2.25.1"
     gson = "2.8.5"
+    leak_canary = "1.6.3"
 
     dependency_jvm = [
             kotlin_stdlib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlins",
@@ -82,6 +83,7 @@ ext.with {
             truth                  : "androidx.test:rules:$truth",
             junit_android          : "androidx.test.ext:junit:$junit_android",
             mockito_android        : "org.mockito:mockito-android:$mockito_android",
+            leak_canary            : "com.squareup.leakcanary:leakcanary-android:$leak_canary",
 
     ]
 

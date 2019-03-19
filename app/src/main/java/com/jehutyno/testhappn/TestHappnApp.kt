@@ -6,6 +6,7 @@ import com.jehutyno.testhappn.di.component.ArticlesComponent
 import com.jehutyno.testhappn.di.component.DaggerAppComponent
 import com.jehutyno.testhappn.di.module.AppModule
 import com.jehutyno.testhappn.di.module.ArticlesModule
+import com.squareup.leakcanary.LeakCanary
 
 class TestHappnApp: Application() {
 
@@ -20,6 +21,10 @@ class TestHappnApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this);
         appComponent.inject(this)
     }
 
