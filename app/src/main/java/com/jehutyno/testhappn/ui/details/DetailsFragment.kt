@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -74,6 +75,10 @@ class DetailsFragment : Fragment(), DetailsView {
 
     override fun renderFavorite(checked: Boolean) {
         bookmarkTv.isChecked = checked
+    }
+
+    override fun hideFavorites() {
+        bookmarkTv.visibility = GONE
     }
 
     override fun renderFavoriteAddSuccess() {

@@ -11,12 +11,15 @@ import com.jehutyno.testhappn.R
 import com.jehutyno.testhappn.di.component.ArticlesScreenComponent
 import com.jehutyno.testhappn.di.module.ArticlesScreenModule
 import com.jehutyno.testhappn.extensions.app
+import com.jehutyno.testhappn.extensions.favoriteEnabled
 import com.jehutyno.testhappn.extensions.mainActivity
 import kotlinx.android.synthetic.main.fragment_articles.*
 import javax.inject.Inject
 
 
 class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClickListener {
+
+
 
     private val navHost by lazy { findNavController(this) }
 
@@ -52,6 +55,7 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(com.jehutyno.testhappn.R.menu.menu, menu)
+        if (!favoriteEnabled) menu.removeItem(R.id.bookmarks)
         (menu.findItem(com.jehutyno.testhappn.R.id.search).actionView as SearchView).apply {
             this.setOnQueryTextListener(
                 object : SearchView.OnQueryTextListener {

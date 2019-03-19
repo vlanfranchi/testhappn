@@ -14,4 +14,5 @@ interface DetailsView {
     fun renderFavoriteAddSuccess()
     fun renderFavoriteDeleteSuccess()
     fun renderError(errorMessage: String)
+    fun hideFavorites()
 }

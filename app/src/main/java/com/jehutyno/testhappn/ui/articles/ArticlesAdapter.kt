@@ -2,9 +2,12 @@ package com.jehutyno.testhappn.ui.articles
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jehutyno.testhappn.R
+import com.jehutyno.testhappn.extensions.favoriteEnabled
 import com.squareup.picasso.Picasso
 
 class ArticlesAdapter(private val context: Context, var listener: OnArticleClickListener?) :
@@ -34,6 +37,7 @@ class ArticlesAdapter(private val context: Context, var listener: OnArticleClick
             holder.date.text = date
             Picasso.get().load(thumbnail).placeholder(R.drawable.placeholder).into(holder.thumbnail)
             val isFavorite = favoriteId != null
+            holder.bookmark.visibility = if (favoriteEnabled) VISIBLE else GONE
             holder.bookmark.isChecked = isFavorite
             holder.bookmark.setOnClickListener {
                 holder.bookmark.isChecked = isFavorite

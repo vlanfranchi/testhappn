@@ -1,6 +1,7 @@
 package com.jehutyno.testhappn.ui.details
 
 import androidx.core.text.HtmlCompat
+import com.jehutyno.testhappn.extensions.favoriteEnabled
 import com.jehutyno.testhappn.extensions.toHumanSlash
 import com.jehutyno.testhappn.extensions.toISO8601
 import com.jehutyno.usecases.AddFavorite
@@ -40,6 +41,7 @@ class DetailsPresenter(
                 view?.renderDate(article.pubDate.toISO8601().toHumanSlash())
                 view?.renderAuthor(article.author)
                 view?.renderThumbnail(article.thumbnail)
+                if (!favoriteEnabled) view?.hideFavorites()
                 view?.renderFavorite(article.favorite_id != null)
             }
         }
