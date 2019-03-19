@@ -7,4 +7,6 @@
     <string name="no_articles">No articles</string>
     <string name="search">Search</string>
     <string name="search_articles">Search articles</string>
+    <string name="favorite_add_success">Favorite Add Success</string>
+    <string name="favorite_add_fail">Favorite Add Fail</string>
 </resources>

@@ -7,6 +7,11 @@ import com.jehutyno.testhappn.database.favorites.FavoriteDAO
 class RoomFavoritesPersistenceSource(private val favoriteDAO: FavoriteDAO) :
     PersistenceFavoritesSource {
 
+    override suspend fun saveFavorite(favorite: Favorite) = favoriteDAO.addFavorite(RoomFavoriteConverter.convert(favorite))
+
+    override suspend fun deleteFavorite(favorite: Favorite) = favoriteDAO.deleteFavorite(RoomFavoriteConverter.convert(favorite))
+
+
     override suspend fun getPersistedFavorite(favoriteId: String): Favorite? = FavoriteRoomConverter.convert(favoriteDAO.getFavorite(favoriteId))
 
     override suspend fun getPersistedFavorites(): List<Favorite>? = FavoriteRoomConverter.convert(favoriteDAO.getAllFavorites())

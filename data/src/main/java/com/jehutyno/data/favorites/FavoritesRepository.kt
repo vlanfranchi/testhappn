@@ -1,5 +1,7 @@
 package com.jehutyno.data.articles
 
+import com.jehutyno.domain.model.AddFavoriteRequest
+import com.jehutyno.domain.model.BaseResponse
 import com.jehutyno.domain.model.Favorite
 
 
@@ -13,10 +15,26 @@ class FavoritesRepository(
     suspend fun getSavedFavorites() = favoritePersistenceSource.getPersistedFavorites()
 
     @Throws(Exception::class)
-    suspend fun requestNewAFavorites(): List<Favorite>? {
+    suspend fun requestNewFavorites(): List<Favorite>? {
         val newFavorites = networkFavoritesSource.getNetworkFavorites()
         favoritePersistenceSource.saveFavorites(newFavorites)
         return getSavedFavorites()
     }
+
+    @Throws(Exception::class)
+    suspend fun requestAddFavorites(favoriteId: String): BaseResponse {
+        val response = networkFavoritesSource.addNetworkFavorite(AddFavoriteRequest(favoriteId))
+        favoritePersistenceSource.saveFavorite(Favorite(favoriteId))
+        return response
+    }
+
+    @Throws(Exception::class)
+    suspend fun requestRemoveFavorites(favoriteId: String): BaseResponse {
+        val response = networkFavoritesSource.removeNetworkFavorite(favoriteId)
+        favoritePersistenceSource.deleteFavorite(Favorite(favoriteId))
+        return response
+    }
+
+
 
 }

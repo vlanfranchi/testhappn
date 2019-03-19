@@ -107,4 +107,16 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
         navHost.navigate(ArticlesFragmentDirections.showDetails(articleId))
     }
 
+    override fun onFavoriteClickListener(checked: Boolean, articleId: String) {
+        articlesPresenter.switchFavorite(checked, articleId)
+    }
+
+    override fun renderFavoriteAdded(articleId: String, checked: Boolean) {
+        Snackbar.make(pullToRefresh, getString(R.string.favorite_add_success), Snackbar.LENGTH_LONG).show()
+        adapter.updateFavorite(articleId, checked)
+    }
+
+    override fun renderFavoriteRemoved(articleId: String, checked: Boolean) {
+        Snackbar.make(pullToRefresh, getString(R.string.favorite_add_fail), Snackbar.LENGTH_LONG).show()
+    }
 }

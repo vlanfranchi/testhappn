@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jehutyno.testhappn.R
 import com.squareup.picasso.Picasso
 
-class ArticlesAdapter(private val context: Context, var listener: OnArticleClickListener?) : RecyclerView.Adapter<ArticleViewHolder>() {
+class ArticlesAdapter(private val context: Context, var listener: OnArticleClickListener?) :
+    RecyclerView.Adapter<ArticleViewHolder>() {
 
     private var items: List<ArticleItem> = listOf()
 
@@ -32,7 +33,11 @@ class ArticlesAdapter(private val context: Context, var listener: OnArticleClick
             holder.author.text = author
             holder.date.text = date
             Picasso.get().load(thumbnail).placeholder(R.drawable.placeholder).into(holder.thumbnail)
-            holder.bookmark.isChecked = favorite_id != null
+            holder.bookmark.isChecked = isFavorite
+            holder.bookmark.setOnCheckedChangeListener { _, _ ->
+                holder.bookmark.isChecked = isFavorite
+                listener?.onFavoriteClickListener(isFavorite, id)
+            }
             holder.itemView.setOnClickListener { listener?.onArticleClickListener(id) }
         }
     }
@@ -44,8 +49,15 @@ class ArticlesAdapter(private val context: Context, var listener: OnArticleClick
         }
     }
 
+    fun updateFavorite(articleId: String, checked: Boolean) {
+        val position = items.indexOfFirst { it.id == articleId }
+        items[position].isFavorite = checked
+        notifyItemChanged(position)
+    }
+
     interface OnArticleClickListener {
         fun onArticleClickListener(articleId: String)
+        fun onFavoriteClickListener(checked: Boolean, articleId: String)
     }
 
 }

@@ -1,6 +1,8 @@
 package com.jehutyno.testhappn.ui.articles
 
+import com.jehutyno.usecases.AddFavorite
 import com.jehutyno.usecases.GetArticles
+import com.jehutyno.usecases.RemoveFavorite
 import com.jehutyno.usecases.RequestNewArticles
 import kotlinx.coroutines.*
 import retrofit2.HttpException
@@ -9,8 +11,10 @@ import kotlin.coroutines.CoroutineContext
 class ArticlesPresenter(
     private var view: ArticlesView?,
     private val getArticles: GetArticles,
-    private val requestNewArticles: RequestNewArticles
-) : CoroutineScope {
+    private val requestNewArticles: RequestNewArticles,
+    private val addFavorite: AddFavorite,
+    private val removeFavorite: RemoveFavorite
+    ) : CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -48,7 +52,6 @@ class ArticlesPresenter(
             withContext(Dispatchers.IO) {
                 requestNewArticles()
             }
-            loadPersistedArticles()
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")
             println("HTTP error: ${e.code()}")
@@ -56,6 +59,7 @@ class ArticlesPresenter(
             view?.renderError("Error: ${e.message} ")
             println("Error: ${e.message} ")
         }
+        loadPersistedArticles()
     }
 
     fun switchSort() {
@@ -65,6 +69,28 @@ class ArticlesPresenter(
 
     fun searchArticles(query: String) {
         loadPersistedArticles(query)
+    }
+
+    fun switchFavorite(checked: Boolean, articleId: String) = launch {
+        try {
+            if (checked) {
+                withContext(Dispatchers.IO) {
+                    removeFavorite(articleId)
+                }
+                view?.renderFavoriteRemoved(articleId, false)
+            } else {
+                withContext(Dispatchers.IO) {
+                    addFavorite(articleId)
+                }
+                view?.renderFavoriteAdded(articleId, true)
+            }
+        } catch (e: HttpException) {
+            view?.renderError("HTTP error: ${e.code()}")
+            println("HTTP error: ${e.code()}")
+        } catch (e: Throwable) {
+            view?.renderError("Error: ${e.message} ")
+            println("Error: ${e.message} ")
+        }
     }
 
     fun onDestroy() {

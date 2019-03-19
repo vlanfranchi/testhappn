@@ -11,5 +11,5 @@ data class Article(
     val content: String?,
     val categories: List<String>?,
     val thumbnail: String?,
-    val favorite_id: Long?
+    val favorite_id: String?
 )

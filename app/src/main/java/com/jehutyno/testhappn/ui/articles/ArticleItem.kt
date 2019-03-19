@@ -8,5 +8,5 @@ data class ArticleItem(
     val author: String,
     val content: String?,
     val thumbnail: String?,
-    val favorite_id: Long?
+    var isFavorite: Boolean
 )

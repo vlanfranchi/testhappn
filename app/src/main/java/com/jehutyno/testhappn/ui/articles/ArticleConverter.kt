@@ -16,7 +16,7 @@ object ArticleConverter: Converter<Article, ArticleItem> {
             thumbnail = input.thumbnail,
             author = input.author,
             content = input.content,
-            favorite_id = input.favorite_id
+            isFavorite = input.favorite_id != null
         )
     }
 

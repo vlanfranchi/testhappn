@@ -1,6 +1,7 @@
 package com.jehutyno.testhappn.database.favorites
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
@@ -12,6 +13,12 @@ interface FavoriteDAO {
 
     @Query("Select * FROM favorites")
     suspend fun getAllFavorites(): List<FavoriteRoom>
+
+    @Insert(onConflict = REPLACE)
+    suspend fun addFavorite(favorite: FavoriteRoom)
+
+    @Delete
+    suspend fun deleteFavorite(favorite: FavoriteRoom)
 
     @Insert(onConflict = REPLACE)
     suspend fun addFavorites(favorite: List<FavoriteRoom>?)
