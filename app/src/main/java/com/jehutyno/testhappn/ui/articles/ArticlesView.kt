@@ -11,6 +11,6 @@ interface ArticlesView {
     fun renderArticles(articles: List<ArticleItem>?)
     fun renderError(errorMessage: String)
     fun renderEmpty()
-    fun renderFavoriteAdded(articleId: String, checked: Boolean)
-    fun renderFavoriteRemoved(articleId: String, checked: Boolean)
+    fun renderFavoriteAddSuccess(articleId: String, favoriteId: String)
+    fun renderFavoriteDeleteSuccess(articleId: String)
 }

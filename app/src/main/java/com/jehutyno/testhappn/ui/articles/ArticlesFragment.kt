@@ -107,16 +107,18 @@ class ArticlesFragment : Fragment(), ArticlesView, ArticlesAdapter.OnArticleClic
         navHost.navigate(ArticlesFragmentDirections.showDetails(articleId))
     }
 
-    override fun onFavoriteClickListener(checked: Boolean, articleId: String) {
-        articlesPresenter.switchFavorite(checked, articleId)
+    override fun onFavoriteClickListener(articleId: String, favoriteId: String?) {
+        articlesPresenter.switchFavorite(articleId, favoriteId)
     }
 
-    override fun renderFavoriteAdded(articleId: String, checked: Boolean) {
+    override fun renderFavoriteAddSuccess(articleId: String, favoriteId: String) {
         Snackbar.make(pullToRefresh, getString(R.string.favorite_add_success), Snackbar.LENGTH_LONG).show()
-        adapter.updateFavorite(articleId, checked)
+        adapter.updateFavorite(articleId, favoriteId)
     }
 
-    override fun renderFavoriteRemoved(articleId: String, checked: Boolean) {
-        Snackbar.make(pullToRefresh, getString(R.string.favorite_add_fail), Snackbar.LENGTH_LONG).show()
+    override fun renderFavoriteDeleteSuccess(articleId: String) {
+        Snackbar.make(pullToRefresh, getString(R.string.favorite_delete_success), Snackbar.LENGTH_LONG).show()
+        adapter.updateFavorite(articleId, null)
     }
+
 }

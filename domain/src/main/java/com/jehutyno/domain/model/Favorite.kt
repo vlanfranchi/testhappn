@@ -1,5 +1,6 @@
 package com.jehutyno.domain.model
 
 data class Favorite(
-    val article: String
+    val _id: String,
+    val article: Article? = null
 )

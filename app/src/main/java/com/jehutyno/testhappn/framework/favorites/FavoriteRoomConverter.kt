@@ -8,7 +8,7 @@ object FavoriteRoomConverter: Converter<FavoriteRoom, Favorite> {
 
     override fun convert(input: FavoriteRoom): Favorite {
         return Favorite(
-            article = input.favoriteId
+            _id = input.favoriteId
         )
     }
 

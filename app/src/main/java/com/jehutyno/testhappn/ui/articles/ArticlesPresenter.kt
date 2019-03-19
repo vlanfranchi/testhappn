@@ -14,7 +14,7 @@ class ArticlesPresenter(
     private val requestNewArticles: RequestNewArticles,
     private val addFavorite: AddFavorite,
     private val removeFavorite: RemoveFavorite
-    ) : CoroutineScope {
+) : CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -71,18 +71,18 @@ class ArticlesPresenter(
         loadPersistedArticles(query)
     }
 
-    fun switchFavorite(checked: Boolean, articleId: String) = launch {
+    fun switchFavorite(articleId: String, favoriteId: String?) = launch {
         try {
-            if (checked) {
+            if (favoriteId != null) {
                 withContext(Dispatchers.IO) {
-                    removeFavorite(articleId)
+                    removeFavorite(favoriteId)
                 }
-                view?.renderFavoriteRemoved(articleId, false)
+                view?.renderFavoriteDeleteSuccess(articleId)
             } else {
-                withContext(Dispatchers.IO) {
+                val favorite = withContext(Dispatchers.IO) {
                     addFavorite(articleId)
                 }
-                view?.renderFavoriteAdded(articleId, true)
+                view?.renderFavoriteAddSuccess(articleId, favorite._id)
             }
         } catch (e: HttpException) {
             view?.renderError("HTTP error: ${e.code()}")

@@ -33,10 +33,11 @@ class ArticlesAdapter(private val context: Context, var listener: OnArticleClick
             holder.author.text = author
             holder.date.text = date
             Picasso.get().load(thumbnail).placeholder(R.drawable.placeholder).into(holder.thumbnail)
+            val isFavorite = favoriteId != null
             holder.bookmark.isChecked = isFavorite
-            holder.bookmark.setOnCheckedChangeListener { _, _ ->
+            holder.bookmark.setOnClickListener {
                 holder.bookmark.isChecked = isFavorite
-                listener?.onFavoriteClickListener(isFavorite, id)
+                listener?.onFavoriteClickListener(id, favoriteId)
             }
             holder.itemView.setOnClickListener { listener?.onArticleClickListener(id) }
         }
@@ -49,15 +50,15 @@ class ArticlesAdapter(private val context: Context, var listener: OnArticleClick
         }
     }
 
-    fun updateFavorite(articleId: String, checked: Boolean) {
+    fun updateFavorite(articleId: String, favoriteId: String?) {
         val position = items.indexOfFirst { it.id == articleId }
-        items[position].isFavorite = checked
+        items[position].favoriteId = favoriteId
         notifyItemChanged(position)
     }
 
     interface OnArticleClickListener {
         fun onArticleClickListener(articleId: String)
-        fun onFavoriteClickListener(checked: Boolean, articleId: String)
+        fun onFavoriteClickListener(articleId: String, favoriteId: String?)
     }
 
 }

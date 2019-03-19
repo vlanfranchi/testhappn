@@ -1,7 +1,6 @@
-package com.jehutyno.data.articles
+package com.jehutyno.data.favorites
 
 import com.jehutyno.domain.model.AddFavoriteRequest
-import com.jehutyno.domain.model.BaseResponse
 import com.jehutyno.domain.model.Favorite
 
 interface NetworkFavoritesSource {
@@ -10,9 +9,9 @@ interface NetworkFavoritesSource {
     suspend fun getNetworkFavorites(): List<Favorite>
 
     @Throws(Exception::class)
-    suspend fun addNetworkFavorite(addFavorite: AddFavoriteRequest): BaseResponse
+    suspend fun addNetworkFavorite(addFavorite: AddFavoriteRequest): Favorite
 
     @Throws(Exception::class)
-    suspend fun removeNetworkFavorite(favoriteId: String): BaseResponse
+    suspend fun removeNetworkFavorite(favoriteId: String)
 
 }
